@@ -1,5 +1,3 @@
-import { siteFetch } from '@/lib/siteFetch'
-
 export const getSiteSlugFromDomain = (): string => {
   // Server-side fallback
   if (typeof window === 'undefined') return 'ejaamss';
@@ -7,7 +5,7 @@ export const getSiteSlugFromDomain = (): string => {
   const hostname = window.location.hostname;
   const slug = hostname.split('.')[0];
 
-  const validSites = ['ajoams', 'ajomait', 'ejoas', 'ijipal', 'ejaamss', 'ejauipar', 'ejffabls', 'ejimapss', 'ejlilejgp', 'ijarcm', 'wjiis', 'localhost'];
+  const validSites = ['ajoams', 'ajomait', 'ejoas', 'ijipal', 'ejaamss', 'ejauipar', 'ejffabls', 'ejimapss', 'ejlilejgp', 'ijarcm', 'wjiis', 'insightonix', 'ijlscl', 'localhost'];
   return validSites.includes(slug) ? slug : 'ejaamss';
 };
 
@@ -17,7 +15,7 @@ export const siteFetch = async (
 ) => {
   const siteSlug = getSiteSlugFromDomain();
 
-  return siteFetch(url, {
+  return fetch(url, {
     ...options,
     headers: {
       ...options.headers,
